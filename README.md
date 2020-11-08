@@ -29,6 +29,17 @@ make run
 
 [Swagger API documetation](http://localhost:8001/go-popular/v1/swagger/index.html)
 
+## Testing
+Running test
+```
+make test
+```
+
+## Mocks
+Generate package mocks
+```
+make mock
+```
 
 # Docker
 Build and run docker image
