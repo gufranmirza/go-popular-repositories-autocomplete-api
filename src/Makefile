@@ -22,6 +22,11 @@ run:
 start:
 	../bin/${BINARY_NAME} serve
 
+.PHONY: dataloader
+dataloader:
+	../bin/${BINARY_NAME} dataloader
+
+
 api-docs:
 	export PATH=$(go env GOPATH)/bin:$PATH
 	swag init --output=./web/docs

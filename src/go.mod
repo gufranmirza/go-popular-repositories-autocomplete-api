@@ -9,6 +9,7 @@ require (
 	github.com/go-chi/cors v1.1.1
 	github.com/go-chi/render v1.0.1
 	github.com/go-openapi/spec v0.19.12 // indirect
+	github.com/go-ozzo/ozzo-validation v3.6.0+incompatible // indirect
 	github.com/golang/snappy v0.0.2 // indirect
 	github.com/google/uuid v1.1.2
 	github.com/gufranmirza/redact-api-golang/src v0.0.0-20201008184524-34adcc7f1181 // indirect

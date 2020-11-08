@@ -5,4 +5,5 @@ import "github.com/gufranmirza/go-popular-repositories-autocomplete-api/database
 // RepositoryDal ...
 type RepositoryDal interface {
 	Create(repository *dbmodels.Repository) error
+	Search(query string) ([]dbmodels.Repository, error)
 }

@@ -5,6 +5,8 @@ package router
 import (
 	"time"
 
+	"github.com/gufranmirza/go-popular-repositories-autocomplete-api/web/services/v1/repositoryservice"
+
 	swagger "github.com/swaggo/http-swagger"
 
 	"github.com/go-chi/chi"
@@ -20,6 +22,7 @@ import (
 type router struct {
 	logger      logging.Logger
 	health      health.Health
+	repository  repositoryservice.RepositoryService
 	middlewares middlewares.Middlewares
 }
 
@@ -29,6 +32,7 @@ func NewRouter() Router {
 		logger:      logging.NewLogger(),
 		health:      health.NewHealth(),
 		middlewares: middlewares.NewMiddlewares(),
+		repository:  repositoryservice.NewRepositoryService(),
 	}
 }
 
@@ -60,6 +64,9 @@ func (router *router) Router(enableCORS bool) *chi.Mux {
 
 	// ================= API Documentation ====================
 	r.Get(v1Prefix+"/swagger/*", swagger.Handler())
+
+	// ================= API Documentation ====================
+	r.Get(v1Prefix+"/repository/search", router.repository.Search)
 
 	return r
 }

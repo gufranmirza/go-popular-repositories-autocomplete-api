@@ -18,7 +18,9 @@ var doc = `{
     "info": {
         "description": "{{.Description}}",
         "title": "{{.Title}}",
-        "contact": {},
+        "contact": {
+            "name": "API Support"
+        },
         "license": {
             "name": "Apache 2.0",
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
@@ -68,9 +70,108 @@ var doc = `{
                     }
                 }
             }
+        },
+        "/repository/search": {
+            "get": {
+                "description": "It allows to search repositories",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "jobs"
+                ],
+                "summary": "Search repositories",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "search query",
+                        "name": "q",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "response limit default is 10",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/dbmodels.Repository"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/errorinterface.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/errorinterface.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/errorinterface.ErrorResponse"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
+        "dbmodels.Repository": {
+            "type": "object",
+            "properties": {
+                "createdTimestampUTC": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "forks": {
+                    "type": "integer"
+                },
+                "full_name": {
+                    "type": "string"
+                },
+                "homepage": {
+                    "type": "string"
+                },
+                "html_url": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "size": {
+                    "description": "Language string ` + "`" + `json:\"language,omitempty\" bson:\"language,omitempty\"` + "`" + `",
+                    "type": "integer"
+                },
+                "updatedTimestampUTC": {
+                    "type": "string"
+                },
+                "watchers": {
+                    "type": "integer"
+                }
+            }
+        },
         "errorinterface.ErrorResponse": {
             "type": "object",
             "properties": {
