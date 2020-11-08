@@ -11,7 +11,7 @@ import (
 
 // @Summary Search repositories
 // @Description It allows to search repositories
-// @Tags jobs
+// @Tags Repository
 // @Accept json
 // @Produce json
 // @Param q query string true "search query"

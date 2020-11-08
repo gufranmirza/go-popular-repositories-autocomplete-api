@@ -168,5 +168,5 @@ paths:
             $ref: '#/definitions/errorinterface.ErrorResponse'
       summary: Search repositories
       tags:
-      - jobs
+      - Repository
 swagger: "2.0"

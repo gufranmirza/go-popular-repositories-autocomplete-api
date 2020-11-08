@@ -81,7 +81,7 @@ var doc = `{
                     "application/json"
                 ],
                 "tags": [
-                    "jobs"
+                    "Repository"
                 ],
                 "summary": "Search repositories",
                 "parameters": [
