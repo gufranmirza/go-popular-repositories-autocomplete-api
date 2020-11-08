@@ -1,9 +1,33 @@
+export BINARY_NAME = "go-popular"
+export CONFIG_FILE = "app-config.json"
+
+# global command
+.PHONY: all
+all: dependencies build
+
+.PHONY: dependencies
+dependencies:
+	go mod download
+
+.PHONY: build
+build:
+	env GOOS=linux GOARCH=amd64 go build -o ../bin/${BINARY_NAME} .
+	cp -r ${CONFIG_FILE} ../bin
+
+.PHONY: run
+run:
+	go run ./main.go serve
+
+.PHONY: start
+start:
+	../bin/${BINARY_NAME} serve
+
 api-docs:
 	export PATH=$(go env GOPATH)/bin:$PATH
 	swag init --output=./web/docs
 
 migrate-up:
-	go run main.go migrate --action=up
+	../bin/${BINARY_NAME} migrate --action=up
 
 migrate-down:
-	go run main.go migrate --action=down
+	../bin/${BINARY_NAME} migrate --action=down
