@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/go-chi/render"
+	"github.com/gufranmirza/go-popular-repositories-autocomplete-api/database/connection"
 	"github.com/gufranmirza/go-popular-repositories-autocomplete-api/logging"
 	"github.com/gufranmirza/go-popular-repositories-autocomplete-api/web/interfaces/v1/healthinterface"
 	_ "github.com/gufranmirza/go-popular-repositories-autocomplete-api/web/renderers" // swag
@@ -15,12 +16,14 @@ import (
 
 type health struct {
 	logger logging.Logger
+	db     connection.MongoStore
 }
 
 // NewHealth returns health impl
 func NewHealth() Health {
 	return &health{
 		logger: logging.NewLogger(),
+		db:     connection.NewMongoStore(),
 	}
 }
 
@@ -51,6 +54,9 @@ func (h *health) GetHealth(w http.ResponseWriter, r *http.Request) {
 	inbound := []healthinterface.InboundInterface{}
 	outbound := []healthinterface.OutboundInterface{}
 
+	// add mongo connection status
+	mongo := h.db.Health()
+	outbound = append(outbound, *mongo)
 	// add internal server details
 	name, _ := os.Hostname()
 

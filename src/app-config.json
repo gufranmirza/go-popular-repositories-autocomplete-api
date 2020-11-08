@@ -25,5 +25,11 @@
         "text_logging": false,
         "log_level": "DEBUG",
         "log_filename": "go-popular-api.log"
+    },
+    "db": {
+        "host": "mongodb://localhost:27017",
+        "database": "repositories_db",
+        "query_timeout_in_sec": 40,
+        "repository_collection": "repositories"
     }
 }

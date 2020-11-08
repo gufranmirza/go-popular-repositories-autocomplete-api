@@ -4,16 +4,26 @@ import (
 	"github.com/gufranmirza/go-popular-repositories-autocomplete-api/cmd"
 )
 
-// @title Go Popular API Documentation
+// @title Recruiter API Documentation
 // @version 2.0
-// @description Go Popular API Documentation
+// @description Recruiter API Documentation
+
+// @contact.name API Support
+// @contact.url http://jobbox.ai
+// @contact.email hello@jobbox.ai
 
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 
 // @host localhost:8001
-// @BasePath /go-popular/v1
+// @BasePath /recruiter-api/v1
 // @query.collection.format multi
+
+// @securityDefinitions.basic BasicAuth
+
+// @securityDefinitions.apikey ApiKeyAuth
+// @in header
+// @name Authorization
 
 func main() {
 	cmd.Execute()
