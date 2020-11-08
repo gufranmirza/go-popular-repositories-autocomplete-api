@@ -2,7 +2,7 @@
 Provides Autocomplete functionality for Popular Golang Repositories 
 
 
-# Development
+# Running Project
 ## Build Project
 ```
 make
@@ -30,3 +30,13 @@ make run
 [Swagger API documetation](http://localhost:8001/go-popular/v1/swagger/index.html)
 
 
+# Docker
+Build and run docker image
+```
+docker-compose up -d --build
+```
+
+## Visit
+[http://localhost:8001/go-popular/v1/repository/search?q=core&limit=5](http://localhost:8001/go-popular/v1/repository/search?q=core&limit=5)
+
+[Swagger API documetation](http://localhost:8001/go-popular/v1/swagger/index.html)
