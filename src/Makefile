@@ -3,7 +3,7 @@ export CONFIG_FILE = "app-config.json"
 
 # global command
 .PHONY: all
-all: dependencies build
+all: dependencies build test
 
 .PHONY: dependencies
 dependencies:
