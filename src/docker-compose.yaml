@@ -5,6 +5,14 @@ services:
     container_name: 'mongo'
     ports:
       - '27017:27017'
+  
+  dbseed:
+    build:
+      context: ./data
+      dockerfile: Dockerfile
+    links:
+      - mongo
+      
   api:
     container_name: 'api'
     build: './'

@@ -16,8 +16,8 @@ type Repository struct {
 
 	URL      string `json:"html_url,omitempty" bson:"html_url,omitempty"`
 	Homepage string `json:"homepage,omitempty" bson:"homepage,omitempty"`
-	// Language string `json:"language,omitempty" bson:"language,omitempty"`
-	Size     int `json:"size,omitempty" bson:"size,omitempty"`
-	Watchers int `json:"watchers,omitempty" bson:"watchers,omitempty"`
-	Forks    int `json:"forks,omitempty" bson:"forks,omitempty"`
+	Language string `json:"language,omitempty" bson:"language,omitempty"`
+	Size     int    `json:"size,omitempty" bson:"size,omitempty"`
+	Watchers int    `json:"watchers,omitempty" bson:"watchers,omitempty"`
+	Forks    int    `json:"forks,omitempty" bson:"forks,omitempty"`
 }
